@@ -1,0 +1,8 @@
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/install.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/list_install_components.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/edit_cache.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/DirectAccess.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/StoppingPower.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/rebuild_cache.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/install/strip.dir
+/home/fcsalgado/Documents/GEANT4/geant4-projects/GEANT4 Examples/Stopping Power/stpower-build/CMakeFiles/install/local.dir

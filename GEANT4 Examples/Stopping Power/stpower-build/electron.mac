@@ -1,0 +1,17 @@
+#
+/process/eLoss/verbose 0
+/process/eLoss/CSDARange true
+/process/eLoss/maxKinEnergyCSDA 5 GeV
+/process/em/printParameters
+#
+/testem/phys/addPhysics emstandard_opt4
+/testem/det/setMat F2glass
+#
+/run/initialize
+#
+/gun/particle e-
+/gun/energy 2 GeV
+#
+/run/setCut 10 km
+#
+/run/beamOn

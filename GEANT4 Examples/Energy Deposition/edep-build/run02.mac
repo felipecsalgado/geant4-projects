@@ -1,0 +1,33 @@
+#
+/control/verbose 2
+/run/verbose 2
+#
+/run/numberOfThreads 2
+#
+/testem/det/setNbOfLayers 200
+/testem/det/setNbOfAbsor  1
+/testem/det/setAbsor 1 F2glass  5 mm
+/testem/det/setSizeYZ  4 cm
+#
+/testem/phys/addPhysics  emstandard_opt4
+#
+/run/setCut 10 um
+#
+/run/initialize
+#
+/gun/particle e-
+/gun/energy 8 GeV
+#
+/analysis/setFileName run02_8GeV
+/analysis/h1/set 1 10000 0. 5000. MeV
+/analysis/h1/set 11 202   0.   202.  none #long. profile in absor1
+/analysis/h1/set 21 202  0.   202. none	#energy flow
+/analysis/h1/set 22 202  0.   202. none	#lateral energy leakage
+#
+# For generating Ascii files from the histograms
+#/analysis/h1/setAscii 1
+#/analysis/h1/setAscii 11
+#
+/run/printProgress 100
+#
+/run/beamOn 1000
