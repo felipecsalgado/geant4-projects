@@ -438,10 +438,10 @@ void Run::GetStoppingPower(G4double norm)
     G4double meandEdx = MeanEAbs / length;
     G4double stopPower = meandEdx / density;
 
+    G4cout << "\n ======================== START CUSTOM summary ======================\n";
+
     G4cout << fDetector->GetAbsorMaterial(k)->GetName() << ": "
            << G4endl;
-
-    G4cout << "\n ======================== START CUSTOM summary ======================\n";
     G4cout << "\nFrom formulas:"
            << "\tStopping Power dEdx = " << dEdxTable / (MeV / cm) << " MeV/cm"
            << "\t(" << stopTable / (MeV * cm2 / g) << " MeV*cm2/g)"

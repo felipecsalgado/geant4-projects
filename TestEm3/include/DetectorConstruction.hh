@@ -120,6 +120,11 @@ private:
   G4LogicalVolume*   fLogicLayer;
   G4VPhysicalVolume* fPhysiLayer;
 
+  // Custom
+  G4Box*             fSolidPlane0;
+  G4LogicalVolume*   fLogicPlane0;
+  G4VPhysicalVolume* fPhysiPlane0;
+
   G4Box*             fSolidAbsor[kMaxAbsor];
   G4LogicalVolume*   fLogicAbsor[kMaxAbsor];
   G4VPhysicalVolume* fPhysiAbsor[kMaxAbsor];

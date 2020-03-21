@@ -41,109 +41,156 @@
 #include "G4RunManager.hh"
 #include "G4PhysicalConstants.hh"
 
+#include "G4SystemOfUnits.hh"
+#include "G4UnitsTable.hh"
+#include "G4PhysicalConstants.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-SteppingAction::SteppingAction(DetectorConstruction* det, EventAction* evt)
-:G4UserSteppingAction(),fDetector(det),fEventAct(evt) 
-{ }
+SteppingAction::SteppingAction(DetectorConstruction *det, EventAction *evt)
+    : G4UserSteppingAction(), fDetector(det), fEventAct(evt)
+{
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 SteppingAction::~SteppingAction()
-{ }
+{
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void SteppingAction::UserSteppingAction(const G4Step* aStep)
+void SteppingAction::UserSteppingAction(const G4Step *aStep)
 {
   //track informations
-  const G4StepPoint* prePoint = aStep->GetPreStepPoint();   
-    
+  const G4StepPoint *prePoint = aStep->GetPreStepPoint();
+
   //if World, return
   //
-  G4VPhysicalVolume* volume = prePoint->GetTouchableHandle()->GetVolume();    
-  //if sum of absorbers do not fill exactly a layer: check material, not volume.
-  const G4Material* mat = volume->GetLogicalVolume()->GetMaterial();
-  if (mat == fDetector->GetWorldMaterial()) return; 
+  G4VPhysicalVolume *volume = prePoint->GetTouchableHandle()->GetVolume();
 
-  const G4StepPoint* endPoint = aStep->GetPostStepPoint();
-  const G4ParticleDefinition* particle = aStep->GetTrack()->GetDefinition(); 
- 
+  // Modification. Changed the positino of the variable declarations
+  const G4StepPoint *endPoint = aStep->GetPostStepPoint();
+  const G4ParticleDefinition *particle = aStep->GetTrack()->GetDefinition();
+
+  // Added
+  G4VPhysicalVolume *endvolume = endPoint->GetTouchableHandle()->GetVolume();
+
+  // Get all particles entering the Plane0 and select only the gammas
+  // to fill a histogram with their energy.
+  // The histogram is created at the HistoManager.cc file
+  // Go and Check!
+  if (endPoint->GetStepStatus() == fGeomBoundary &&
+      endvolume->GetName() == "Plane0Phys" &&
+      volume->GetName() == "World")
+  {
+
+    if (particle->GetParticleName() == "gamma")
+    {
+      G4AnalysisManager::Instance()->FillH1(23,                           // id
+                                            endPoint->GetKineticEnergy(), //Value
+                                            1);                           // weigth
+    }
+  }
+
+  //if sum of absorbers do not fill exactly a layer: check material, not volume.
+  const G4Material *mat = volume->GetLogicalVolume()->GetMaterial();
+  if (mat == fDetector->GetWorldMaterial())
+    return;
+
   //here we are in an absorber. Locate it
   //
-  G4int absorNum  = prePoint->GetTouchableHandle()->GetCopyNumber(0);
-  G4int layerNum  = prePoint->GetTouchableHandle()->GetCopyNumber(1);
-  
+  G4int absorNum = prePoint->GetTouchableHandle()->GetCopyNumber(0);
+  G4int layerNum = prePoint->GetTouchableHandle()->GetCopyNumber(1);
+
   //get Run
-  Run* run = static_cast<Run*>(
-             G4RunManager::GetRunManager()->GetNonConstCurrentRun());
-                       
+  Run *run = static_cast<Run *>(
+      G4RunManager::GetRunManager()->GetNonConstCurrentRun());
+
   // collect energy deposit taking into account track weight
-  G4double edep = aStep->GetTotalEnergyDeposit()*aStep->GetTrack()->GetWeight();
-  
+  G4double edep = aStep->GetTotalEnergyDeposit() * aStep->GetTrack()->GetWeight();
+
   // collect step length of charged particles
   G4double stepl = 0.;
-  if (particle->GetPDGCharge() != 0.) {
+  if (particle->GetPDGCharge() != 0.)
+  {
     stepl = aStep->GetStepLength();
     run->AddChargedStep();
-  } else { run->AddNeutralStep(); }
-  
+  }
+  else
+  {
+    run->AddNeutralStep();
+  }
+
   //  G4cout << "Nabs= " << absorNum << "   edep(keV)= " << edep << G4endl;
-  
+
   // sum up per event
-  fEventAct->SumEnergy(absorNum,edep,stepl);
-  
+  fEventAct->SumEnergy(absorNum, edep, stepl);
+
   //longitudinal profile of edep per absorber
-  if (edep>0.) {
-    G4AnalysisManager::Instance()->FillH1(kMaxAbsor+absorNum, 
-                                          G4double(layerNum+1), edep);
+  if (edep > 0.)
+  {
+    G4AnalysisManager::Instance()->FillH1(kMaxAbsor + absorNum,
+                                          G4double(layerNum + 1), edep);
   }
   //energy flow
   //
   // unique identificator of layer+absorber
-  G4int Idnow = (fDetector->GetNbOfAbsor())*layerNum + absorNum;
+  G4int Idnow = (fDetector->GetNbOfAbsor()) * layerNum + absorNum;
   G4int plane;
   //
   //leaving the absorber ?
-  if (endPoint->GetStepStatus() == fGeomBoundary) {
-    G4ThreeVector position  = endPoint->GetPosition();
+  if (endPoint->GetStepStatus() == fGeomBoundary)
+  {
+    G4ThreeVector position = endPoint->GetPosition();
     G4ThreeVector direction = endPoint->GetMomentumDirection();
-    G4double sizeYZ = 0.5*fDetector->GetCalorSizeYZ();       
+    G4double sizeYZ = 0.5 * fDetector->GetCalorSizeYZ();
     G4double Eflow = endPoint->GetKineticEnergy();
-    if(particle == G4Positron::Positron()) Eflow += 2*electron_mass_c2;
-    if((std::abs(position.y()) >= sizeYZ) || (std::abs(position.z()) >= sizeYZ))
-                                  run->SumLateralEleak(Idnow, Eflow);
-    else if (direction.x() >= 0.) run->SumEnergyFlow(plane=Idnow+1, Eflow);
-    else                          run->SumEnergyFlow(plane=Idnow,  -Eflow);    
-  }   
+    if (particle == G4Positron::Positron())
+      Eflow += 2 * electron_mass_c2;
+    if ((std::abs(position.y()) >= sizeYZ) || (std::abs(position.z()) >= sizeYZ))
+      run->SumLateralEleak(Idnow, Eflow);
+    else if (direction.x() >= 0.)
+      run->SumEnergyFlow(plane = Idnow + 1, Eflow);
+    else
+      run->SumEnergyFlow(plane = Idnow, -Eflow);
+  }
 
-////  example of Birk attenuation
-///G4double destep   = aStep->GetTotalEnergyDeposit();
-///G4double response = BirksAttenuation(aStep);
-///G4cout << " Destep: " << destep/keV << " keV"
-///       << " response after Birks: " << response/keV << " keV" << G4endl;
+  //Custom
+  // Get particles entering the Plane0 Detector
+  //G4cout << endPoint->GetKineticEnergy()/MeV << "   " << particle->GetParticleName() << G4endl;
+  //if (endPoint->GetStepStatus() == fGeomBoundary) {
+  //&& prePoint->GetPhysicalVolume()->GetName() == "World"
+  //  G4cout << " Enter " <<  prePoint->GetPhysicalVolume()->GetName()
+  //  << "  " << endPoint->GetPhysicalVolume()->GetName() << G4endl;
+  //}
+
+  ////  example of Birk attenuation
+  ///G4double destep   = aStep->GetTotalEnergyDeposit();
+  ///G4double response = BirksAttenuation(aStep);
+  ///G4cout << " Destep: " << destep/keV << " keV"
+  ///       << " response after Birks: " << response/keV << " keV" << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4double SteppingAction::BirksAttenuation(const G4Step* aStep)
+G4double SteppingAction::BirksAttenuation(const G4Step *aStep)
 {
- //Example of Birk attenuation law in organic scintillators.
- //adapted from Geant3 PHYS337. See MIN 80 (1970) 239-244
- //
- G4Material* material = aStep->GetTrack()->GetMaterial();
- G4double birk1       = material->GetIonisation()->GetBirksConstant();
- G4double destep      = aStep->GetTotalEnergyDeposit();
- G4double stepl       = aStep->GetStepLength();  
- G4double charge      = aStep->GetTrack()->GetDefinition()->GetPDGCharge();
- //
- G4double response = destep;
- if (birk1*destep*stepl*charge != 0.)
-   {
-     response = destep/(1. + birk1*destep/stepl);
-   }
- return response;
+  //Example of Birk attenuation law in organic scintillators.
+  //adapted from Geant3 PHYS337. See MIN 80 (1970) 239-244
+  //
+  G4Material *material = aStep->GetTrack()->GetMaterial();
+  G4double birk1 = material->GetIonisation()->GetBirksConstant();
+  G4double destep = aStep->GetTotalEnergyDeposit();
+  G4double stepl = aStep->GetStepLength();
+  G4double charge = aStep->GetTrack()->GetDefinition()->GetPDGCharge();
+  //
+  G4double response = destep;
+  if (birk1 * destep * stepl * charge != 0.)
+  {
+    response = destep / (1. + birk1 * destep / stepl);
+  }
+  return response;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
