@@ -50,6 +50,7 @@
 
 // Custom
 #include "G4EmCalculator.hh"
+#include "G4ProcessManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -420,9 +421,40 @@ void Run::GetStoppingPower(G4double norm)
     G4EmCalculator emCalculator;
     G4double dEdxTable = 0., dEdxFull = 0., dEdxNuclear = 0.;
     G4double freeMeanPath = 0., gammaAttLength = 0.;
+    size_t nproc = 0;
+    std::vector<G4double> dEdxProcess;
+    std::vector<G4double> dEdxProcessStop;
+    std::vector<G4String> emName;
+    G4double dEdx_aux;
     if (fParticle->GetPDGCharge() != 0.)
     {
-      dEdxTable = emCalculator.GetDEDX(fEkin, fParticle, material);
+      // get processList and extract EM processes (but not MultipleScattering)
+      G4ProcessVector *plist = fParticle->GetProcessManager()->GetProcessList();
+      G4String procName;
+
+      size_t length_list = plist->size();
+      for (size_t j = 0; j < length_list; j++)
+      {
+        procName = (*plist)[j]->GetProcessName();
+        if (((*plist)[j]->GetProcessType() == fElectromagnetic) &&
+            (procName != "msc"))
+        {
+          //G4cout << procName << G4endl;
+          emName.push_back(procName);
+        }
+      }
+
+      nproc = emName.size();
+
+      for (size_t j = 0; j < nproc; j++)
+      {
+        dEdx_aux = emCalculator.ComputeDEDX(fEkin, fParticle, emName[j], material, fEkin);
+        dEdxTable += dEdx_aux;
+        dEdxProcess.push_back(dEdx_aux);
+        dEdxProcessStop.push_back(dEdx_aux / density);
+      }
+      //dEdxTable = emCalculator.ComputeDEDX(fEkin, fParticle, process, material, 100);
+      //emCalculator.GetDEDX(fEkin, fParticle, material);
       dEdxFull = emCalculator.ComputeTotalDEDX(fEkin, fParticle, material);
       dEdxNuclear = emCalculator.ComputeNuclearDEDX(fEkin, fParticle, material);
       gammaAttLength = emCalculator.ComputeGammaAttenuationLength(fEkin, material);
@@ -442,8 +474,17 @@ void Run::GetStoppingPower(G4double norm)
 
     G4cout << fDetector->GetAbsorMaterial(k)->GetName() << ": "
            << G4endl;
-    G4cout << "\nFrom formulas:"
-           << "\tStopping Power dEdx = " << dEdxTable / (MeV / cm) << " MeV/cm"
+    G4cout << "\nFrom formulas:" << G4endl;
+
+    for (size_t j = 0; j < nproc; j++)
+    {
+      G4cout << "\t\tStopping Power " << emName[j] << " dEdx = "
+             << dEdxProcess[j] / (MeV / cm) << " MeV/cm"
+             << "\t(" << dEdxProcessStop[j] / (MeV * cm2 / g) << " MeV*cm2/g)"
+             << G4endl;
+    }
+
+    G4cout << "\t\tTotal Stopping Power dEdx = " << dEdxTable / (MeV / cm) << " MeV/cm"
            << "\t(" << stopTable / (MeV * cm2 / g) << " MeV*cm2/g)"
            << G4endl;
 

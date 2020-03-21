@@ -2435,9 +2435,54 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  ../include/PrimaryGeneratorAction.hh
  ../include/Run.hh
  /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/src/Run.cc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/DualRand.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/JamesRandom.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/MTwistEngine.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/MixMaxRng.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBinomial.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBinomial.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBit.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBit.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBreitWigner.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandBreitWigner.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandChiSquare.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandChiSquare.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandExpZiggurat.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandExponential.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandExponential.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandFlat.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandFlat.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGamma.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGamma.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGauss.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGauss.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGaussQ.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGaussQ.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGeneral.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandGeneral.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandLandau.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandLandau.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandPoisson.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandPoisson.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandPoissonQ.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandPoissonQ.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandStudentT.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/Random.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/Random.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandomEngine.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RandomEngine.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/Randomize.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RanecuEngine.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/Ranlux64Engine.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RanluxEngine.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Random/RanshiEngine.h
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Units/PhysicalConstants.h
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Units/SystemOfUnits.h
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Utility/defs.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Utility/memory.h
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Utility/thread_local.h
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Vector/AxisAngle.h
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Vector/AxisAngle.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/CLHEP/Vector/LorentzVector.h
@@ -2486,7 +2531,10 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Exception.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ExceptionSeverity.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Exp.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4FastVector.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Fcn.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ForceCondition.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4GPILSelection.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Gamma.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4GeomSplitter.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4H1ToolsManager.hh
@@ -2516,6 +2564,8 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4P1ToolsManager.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4P2ToolsManager.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PDefManager.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleChange.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleChange.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleDefinition.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleDefinition.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleGun.hh
@@ -2525,12 +2575,19 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ParticleTableIterator.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsModelCatalog.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsOrderedFreeVector.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsTable.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsTable.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsVector.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsVector.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PhysicsVectorType.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Positron.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PrimaryParticle.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4PrimaryVertex.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProcessManager.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProcessManager.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProcessType.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProcessVector.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProcessVector.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProductionCuts.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ProductionCutsTable.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ReferenceCountedHandle.hh
@@ -2572,6 +2629,7 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4TouchableHandle.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Track.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Track.icc
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4TrackFastVector.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4TrackStatus.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4TrackVector.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Types.hh
@@ -2590,9 +2648,12 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VNtupleManager.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VP1Manager.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VP2Manager.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VParticleChange.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VParticleChange.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VPhysicalVolume.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VPhysicalVolume.icc
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VPrimaryGenerator.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VProcess.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VRNtupleManager.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VTouchable.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VTouchable.icc
@@ -2600,6 +2661,7 @@ CMakeFiles/TestEm3.dir/src/Run.cc.o
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VUserTrackInformation.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ios.hh
+ /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/Randomize.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/g4root.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/g4root_defs.hh
  /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/geomdefs.hh

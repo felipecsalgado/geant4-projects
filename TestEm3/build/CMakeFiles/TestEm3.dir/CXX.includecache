@@ -459,6 +459,8 @@ iomanip
 -
 G4EmCalculator.hh
 /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/src/G4EmCalculator.hh
+G4ProcessManager.hh
+/home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/src/G4ProcessManager.hh
 
 /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/src/RunAction.cc
 RunAction.hh
