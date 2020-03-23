@@ -371,7 +371,6 @@ void Run::EndOfRun()
   GetStoppingPower(norm);
   G4cout << "\n ======================== END CUSTOM summary ======================\n";
 
-
   if (isStarted)
     acc.EndOfAcceptance();
 
