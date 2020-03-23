@@ -367,7 +367,10 @@ void Run::EndOfRun()
   }
 
   //CUSTOM
+  G4cout << "\n ======================== START CUSTOM summary ======================\n";
   GetStoppingPower(norm);
+  G4cout << "\n ======================== END CUSTOM summary ======================\n";
+
 
   if (isStarted)
     acc.EndOfAcceptance();
@@ -470,8 +473,6 @@ void Run::GetStoppingPower(G4double norm)
     G4double meandEdx = MeanEAbs / length;
     G4double stopPower = meandEdx / density;
 
-    G4cout << "\n ======================== START CUSTOM summary ======================\n";
-
     G4cout << fDetector->GetAbsorMaterial(k)->GetName() << ": "
            << G4endl;
     G4cout << "\nFrom formulas:" << G4endl;
@@ -508,6 +509,4 @@ void Run::GetStoppingPower(G4double norm)
            << "\t(" << stopPower / (MeV * cm2 / g) << " MeV*cm2/g)"
            << G4endl;
   }
-
-  G4cout << "\n ======================== END CUSTOM summary ======================\n";
 }
