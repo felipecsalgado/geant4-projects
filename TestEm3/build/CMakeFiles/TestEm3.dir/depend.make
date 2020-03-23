@@ -214,6 +214,7 @@ CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Scene.icc
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SceneHandlerList.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SceneList.hh
+CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4ScoringManager.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SmartTrackStack.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SmartVoxelHeader.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SmartVoxelHeader.icc
@@ -223,6 +224,7 @@ CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4SmartVoxelProxy.icc
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4StackManager.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4StackedTrack.hh
+CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4StatDouble.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Step.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4Step.icc
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4StepPoint.hh
@@ -291,6 +293,8 @@ CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VRML2File.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VSceneHandler.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VSceneHandler.icc
+CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VScoreWriter.hh
+CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VScoringMesh.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VSolid.hh
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VSolid.icc
 CMakeFiles/TestEm3.dir/TestEm3.cc.o: /home/fcsalgado/Documents/GEANT4/geant4.10.05.p01-install/include/Geant4/G4VStateDependent.hh

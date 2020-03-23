@@ -48,6 +48,8 @@
 #include "G4UIExecutive.hh"
 #include "G4VisExecutive.hh"
 
+#include "G4ScoringManager.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....
 
 int main(int argc,char** argv) {
@@ -94,6 +96,9 @@ int main(int argc,char** argv) {
   //get the pointer to the User Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
 
+  // Set scoring meshes
+  G4ScoringManager* scoringManager = G4ScoringManager::GetScoringManager();
+
   if (ui)  {
     //interactive mode
     visManager = new G4VisExecutive();
@@ -103,6 +108,10 @@ int main(int argc,char** argv) {
     delete ui;
   } else {
     //batch mode
+    // Allow visualisation commands in the batch mode
+    visManager = new G4VisExecutive();
+    visManager->Initialize();
+    // Run the .mac file that is used as argument on the batch mode
     G4String command = "/control/execute ";
     G4String fileName = argv[1];
     UImanager->ApplyCommand(command+fileName);
