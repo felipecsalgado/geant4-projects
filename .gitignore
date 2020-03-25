@@ -1,0 +1,4 @@
+*.o
+*.root
+GeneralPurpose/build/CMakeFiles/*.*
+GeneralPurpose/build/*.root
