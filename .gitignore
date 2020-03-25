@@ -1,4 +1,4 @@
 *.o
 *.root
-TestEm3/build/CMakeFiles/*.*
-TestEm3/build/*.root
+GeneralPurpose/build/CMakeFiles/*.*
+GeneralPurpose/build/*.root

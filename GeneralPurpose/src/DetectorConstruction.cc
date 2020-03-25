@@ -423,15 +423,15 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   // Custom
   // Add a detection plane
-  G4double fPlane0Thickness = 3.*cm;
+  G4double fPlane0Thickness = 30.*mm;
   G4double fPlane0YZ = fCalorSizeYZ;
   G4double fPlane0Pos = fCalorThickness/2 + 10.*cm; 
   fSolidPlane0 = new G4Box("Plane0",
-                          fPlane0Thickness / 2, fPlane0YZ / 2, fPlane0YZ / 2);
+                           fPlane0Thickness / 2, fPlane0YZ / 2, fPlane0YZ / 2);
 
   fLogicPlane0 = new G4LogicalVolume(fSolidPlane0,
                                      fWorldMaterial,
-                                    "Plane0Logic");
+                                     "Plane0Logic");
 
   fPhysiPlane0 = new G4PVPlacement(0,               //no rotation
                                   G4ThreeVector(fPlane0Pos, 0., 0.), // Position

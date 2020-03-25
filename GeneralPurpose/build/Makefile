@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3
+CMAKE_SOURCE_DIR = /home/fcsalgado/Documents/GEANT4/GEANT4-projects/BaseCode/GeneralPurpose
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/build
+CMAKE_BINARY_DIR = /home/fcsalgado/Documents/GEANT4/GEANT4-projects/BaseCode/GeneralPurpose/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/build/CMakeFiles /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fcsalgado/Documents/GEANT4/GEANT4-projects/BaseCode/GeneralPurpose/build/CMakeFiles /home/fcsalgado/Documents/GEANT4/GEANT4-projects/BaseCode/GeneralPurpose/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fcsalgado/Documents/GEANT4/GEANT4-projects/tutorial/TestEm3/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fcsalgado/Documents/GEANT4/GEANT4-projects/BaseCode/GeneralPurpose/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

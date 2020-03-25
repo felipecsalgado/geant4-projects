@@ -8,7 +8,7 @@
 /run/verbose 2
 /run/numberOfThreads 2
 #
-/testem/det/setNbOfLayers 2
+/testem/det/setNbOfLayers 200
 /testem/det/setNbOfAbsor  1
 /testem/det/setAbsor 1 F2LeadGlass  5 mm
 /testem/det/setSizeYZ  4 cm
@@ -30,9 +30,9 @@
 /analysis/h1/set 22 202  0.   202. none	  #lateral energy leakage
 
 ## Custom histogram for the Gamma profile at Plane0
-/analysis/h1/set 23 202  0.   7. MeV	  #lateral energy leakage
+#/analysis/h1/set 23 202  0.   7. MeV	  #lateral energy leakage
 #
 #
-/run/printProgress 500
+/run/printProgress 50
 #
-/run/beamOn 5000
+/run/beamOn 500
