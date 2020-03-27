@@ -45,6 +45,8 @@
 #include "G4UnitsTable.hh"
 #include "G4PhysicalConstants.hh"
 
+#include "cmath"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 SteppingAction::SteppingAction(DetectorConstruction *det, EventAction *evt)
@@ -69,12 +71,16 @@ void SteppingAction::UserSteppingAction(const G4Step *aStep)
   //
   G4VPhysicalVolume *volume = prePoint->GetTouchableHandle()->GetVolume();
 
-  // Modification. Changed the positino of the variable declarations
+  // Modification. Changed the position of the variable declarations
   const G4StepPoint *endPoint = aStep->GetPostStepPoint();
   const G4ParticleDefinition *particle = aStep->GetTrack()->GetDefinition();
 
   // Added
   G4VPhysicalVolume *endvolume = endPoint->GetTouchableHandle()->GetVolume();
+  //
+  G4double thetaZ = 0.;
+  G4double thetaY = 0.;
+  G4ThreeVector endMomentum = endPoint->GetMomentum();
 
   // Get all particles entering the Plane0 and select only the gammas
   // to fill a histogram with their energy.
@@ -90,6 +96,14 @@ void SteppingAction::UserSteppingAction(const G4Step *aStep)
       G4AnalysisManager::Instance()->FillH1(23,                           // id
                                             endPoint->GetKineticEnergy(), //Value
                                             1);                           // weigth
+      // Filling H2 with angular distribution
+      thetaZ = atan(endMomentum.z()/endMomentum.x());
+      thetaY = atan(endMomentum.y()/endMomentum.x());
+      G4AnalysisManager::Instance()->FillH2(0,      // id
+                                            thetaZ, //Value 1
+                                            thetaY, //Value
+                                            1);     // weigth
+
     }
   }
 

@@ -1,0 +1,43 @@
+#
+# Macro file for "TestEm3.cc" 
+#
+# F2 lead glass
+#
+/control/verbose 2
+#/control/cout/ignoreThreadsExcept 0
+/run/verbose 2
+/run/numberOfThreads 2
+#
+/testem/det/setNbOfLayers 1
+/testem/det/setNbOfAbsor  1
+/testem/det/setAbsor 1 G4_Pb  10 mm
+/testem/det/setSizeYZ  4 cm
+#
+#
+/testem/phys/addPhysics  emstandard_opt4
+#
+/run/setCut 10 um
+#
+/run/initialize
+#
+/gun/particle e-
+/gun/energy 2 GeV
+#
+/analysis/setFileName Pb10mmBremsstrahlung
+/analysis/h1/set 1 100 0. 300. MeV
+/analysis/h1/set 11 202   0.   5.  none #long. profile in absor1
+/analysis/h1/set 21 202  0.   202. none	  #energy flow
+/analysis/h1/set 22 202  0.   202. none	  #lateral energy leakage
+
+## Custom histogram for the Gamma profile at Plane0
+/analysis/h1/set 23 202  0.   7. MeV	  #lateral energy leakage
+/analysis/h2/setX 0 50 -0.1 0.1 rad      # Set angular range on the x-axis
+/analysis/h2/setY 0 50 -0.1 0.1 rad      # Set angular range on the y-axis
+/analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+/analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+/analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+#
+#
+/run/printProgress 500
+#
+/run/beamOn 5000

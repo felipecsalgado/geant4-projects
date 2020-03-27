@@ -95,4 +95,9 @@ void HistoManager::Book()
   ihGamma = analysisManager->CreateH1("gammaPlane0Profile", "Gamma Profile at Plane0", nbins, 0., 1.*MeV);
   analysisManager->SetH1Activation(ihGamma, true);
   G4cout << "Histogram Gamma Profile at Plane0 id = " << ihGamma << G4endl;
+  //
+  ihGamma = analysisManager->CreateH2("gammaPlane0AngDist", "Gamma Angular Distribuiton at Plane0", 
+                            50, -0.1, 0.1, 50, -0.1, 0.1);
+  analysisManager->SetH2Activation(ihGamma, true);
+  G4cout << "Histogram H2 Gamma Profile at Plane0 id = " << ihGamma << G4endl;
 }
