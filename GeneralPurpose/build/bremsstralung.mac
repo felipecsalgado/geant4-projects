@@ -22,6 +22,7 @@
 #
 /gun/particle e-
 /gun/energy 2 GeV
+/testem/gun/rndm 0.6
 #
 /analysis/setFileName Pb10mmBremsstrahlung
 /analysis/h1/set 1 100 0. 300. MeV
@@ -40,4 +41,4 @@
 #
 /run/printProgress 500
 #
-/run/beamOn 5000
+/run/beamOn 50

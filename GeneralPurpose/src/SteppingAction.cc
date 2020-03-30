@@ -107,6 +107,19 @@ void SteppingAction::UserSteppingAction(const G4Step *aStep)
     }
   }
 
+  if (endPoint->GetStepStatus() == fGeomBoundary &&
+      endvolume->GetName() == "G4_Pb" &&
+      volume->GetName() == "World")
+  {
+
+    if (particle->GetParticleName() == "e-")
+    {
+      G4AnalysisManager::Instance()->FillH1(24,                           // id
+                                            endPoint->GetKineticEnergy(), //Value
+                                            1);                           // weigth
+    }
+  }
+
   //if sum of absorbers do not fill exactly a layer: check material, not volume.
   const G4Material *mat = volume->GetLogicalVolume()->GetMaterial();
   if (mat == fDetector->GetWorldMaterial())
