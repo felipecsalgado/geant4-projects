@@ -92,14 +92,27 @@ void HistoManager::Book()
 
   // Custom
   G4int ihGamma;
-  ihGamma = analysisManager->CreateH1("gammaPlane0Profile", "Gamma Profile at Plane0", nbins, 0., 1.*MeV);
-  analysisManager->SetH1Activation(ihGamma, true);
-  G4cout << "Histogram Gamma Profile at Plane0 id = " << ihGamma << G4endl;
-
+  // Histogram of the input electron particle: 23
   ihGamma = analysisManager->CreateH1("ElectronInput", "Electron Input ", nbins, 0., 300.*MeV);
   analysisManager->SetH1Activation(ihGamma, true);
   G4cout << "Histogram Electron Input id = " << ihGamma << G4endl;
   //
+  // Histograms from the particles going out of the material
+  // gammas: 24
+  ihGamma = analysisManager->CreateH1("gammaOutProfile", "Gamma Energy Profile", nbins, 0., 1.*MeV);
+  analysisManager->SetH1Activation(ihGamma, true);
+  G4cout << "Histogram Gamma Energy Profile id = " << ihGamma << G4endl;
+  // positrons: 25
+  ihGamma = analysisManager->CreateH1("positronOutProfile", "Positron Energy Profile", nbins, 0., 1.*MeV);
+  analysisManager->SetH1Activation(ihGamma, true);
+  G4cout << "Histogram Positron Energy Profile id = " << ihGamma << G4endl;
+  // electrons: 26
+  ihGamma = analysisManager->CreateH1("electronOutProfile", "Electron Energy Profile", nbins, 0., 1.*MeV);
+  analysisManager->SetH1Activation(ihGamma, true);
+  G4cout << "Histogram Electron Energy Profile id = " << ihGamma << G4endl;
+
+  // 2D histograms --> need to keep developing
+  // 
   ihGamma = analysisManager->CreateH2("gammaPlane0AngDist", "Gamma Angular Distribuiton at Plane0", 
                             50, -0.1, 0.1, 50, -0.1, 0.1);
   analysisManager->SetH2Activation(ihGamma, true);

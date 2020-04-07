@@ -82,42 +82,52 @@ void SteppingAction::UserSteppingAction(const G4Step *aStep)
   G4double thetaY = 0.;
   G4ThreeVector endMomentum = endPoint->GetMomentum();
 
+  //
+  //G4int totalNbAbsor = fDetector->GetNbOfAbsor();
+  //G4int currentAbsorNb = prePoint->GetTouchableHandle()->GetCopyNumber(0);
   // Get all particles entering the Plane0 and select only the gammas
   // to fill a histogram with their energy.
   // The histogram is created at the HistoManager.cc file
   // Go and Check!
+  G4int idxHist = 0;
+  //G4cout << absorNum << " " << totalNbAbsor << " " << volume->GetName() << G4endl;
+
   if (endPoint->GetStepStatus() == fGeomBoundary &&
-      endvolume->GetName() == "Plane0Phys" &&
-      volume->GetName() == "World")
+      endvolume->GetName() == "World" &&
+      volume->GetName() == "AbsorberPhys")
   {
 
     if (particle->GetParticleName() == "gamma")
     {
-      G4AnalysisManager::Instance()->FillH1(23,                           // id
-                                            endPoint->GetKineticEnergy(), //Value
-                                            1);                           // weigth
+      idxHist = 24;
       // Filling H2 with angular distribution
-      thetaZ = atan(endMomentum.z()/endMomentum.x());
-      thetaY = atan(endMomentum.y()/endMomentum.x());
+      thetaZ = atan(endMomentum.z() / endMomentum.x());
+      thetaY = atan(endMomentum.y() / endMomentum.x());
       G4AnalysisManager::Instance()->FillH2(0,      // id
                                             thetaZ, //Value 1
                                             thetaY, //Value
                                             1);     // weigth
-
     }
+    else if (particle->GetParticleName() == "e+")
+      idxHist = 25;
+    else if (particle->GetParticleName() == "e-")
+      idxHist = 26;
   }
 
   if (endPoint->GetStepStatus() == fGeomBoundary &&
-      endvolume->GetName() == "G4_Pb" &&
+      endvolume->GetName() == "AbsorberPhys" &&
       volume->GetName() == "World")
   {
 
     if (particle->GetParticleName() == "e-")
-    {
-      G4AnalysisManager::Instance()->FillH1(24,                           // id
-                                            endPoint->GetKineticEnergy(), //Value
-                                            1);                           // weigth
-    }
+      idxHist = 23;
+  }
+
+  if (idxHist != 0)
+  {
+    G4AnalysisManager::Instance()->FillH1(idxHist,                      // id
+                                          endPoint->GetKineticEnergy(), //Value
+                                          1);                           // weigth
   }
 
   //if sum of absorbers do not fill exactly a layer: check material, not volume.
@@ -182,15 +192,6 @@ void SteppingAction::UserSteppingAction(const G4Step *aStep)
     else
       run->SumEnergyFlow(plane = Idnow, -Eflow);
   }
-
-  //Custom
-  // Get particles entering the Plane0 Detector
-  //G4cout << endPoint->GetKineticEnergy()/MeV << "   " << particle->GetParticleName() << G4endl;
-  //if (endPoint->GetStepStatus() == fGeomBoundary) {
-  //&& prePoint->GetPhysicalVolume()->GetName() == "World"
-  //  G4cout << " Enter " <<  prePoint->GetPhysicalVolume()->GetName()
-  //  << "  " << endPoint->GetPhysicalVolume()->GetName() << G4endl;
-  //}
 
   ////  example of Birk attenuation
   ///G4double destep   = aStep->GetTotalEnergyDeposit();

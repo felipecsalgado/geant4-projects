@@ -415,7 +415,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     fPhysiAbsor[k] = new G4PVPlacement(0,
                                        G4ThreeVector(xcenter, 0., 0.),
                                        fLogicAbsor[k],
-                                       fAbsorMaterial[k]->GetName(),
+                                       "AbsorberPhys", // original name is: fAbsorMaterial[k]->GetName()
                                        fLogicLayer,
                                        false,
                                        k); //copy number

@@ -96,7 +96,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   }
   else
   {
-    G4cout << "Single Primary!!" << G4endl;
+    //G4cout << "Single Primary!!" << G4endl;
     fParticleGun->GeneratePrimaryVertex(anEvent);
   }
 }
