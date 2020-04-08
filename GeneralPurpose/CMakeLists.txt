@@ -41,7 +41,8 @@ target_link_libraries(TestEm3 ${Geant4_LIBRARIES})
 #
 set(TestEm3_SCRIPTS
     atlashec.mac dedx.mac emtutor.mac ionC12.mac lhcb.mac linac.mac lockwood.mac retrieveTables.mac
-    run01.mac run02.mac storeTables.mac TestEm3.in TestEm3.out tileCal.mac vis.mac leadGlass.mac target.mac
+    run01.mac run02.mac storeTables.mac TestEm3.in TestEm3.out tileCal.mac vis.mac 
+    leadGlass.mac target.mac target2.mac submit_geant.sh submit_geant2.sh
   )
 
 foreach(_script ${TestEm3_SCRIPTS})

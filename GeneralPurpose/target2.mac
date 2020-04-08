@@ -10,13 +10,13 @@
 #
 /testem/det/setNbOfLayers 1
 /testem/det/setNbOfAbsor  1
-/testem/det/setAbsor 1 G4_Al  4 mm
+/testem/det/setAbsor 1 G4_STAINLESS-STEEL  10 um
 /testem/det/setSizeYZ  4 cm
 #
 #
 /testem/phys/addPhysics  emstandard_opt4
 #
-/run/setCut 10 um
+/run/setCut 1 um
 #
 /run/initialize
 #
@@ -24,14 +24,14 @@
 /gun/energy 13 GeV
 /testem/gun/rndm 0.4
 #
-/analysis/setFileName Target_Al4mm
+/analysis/setFileName Target_StSteel10um
 /analysis/h1/set 1 100 0. 300. MeV
 /analysis/h1/set 11 202   0.   5.  none #long. profile in absor1
 /analysis/h1/set 21 202  0.   202. none	  #energy flow
 /analysis/h1/set 22 202  0.   202. none	  #lateral energy leakage
 
 ## Custom energy profile of the input electron particles
-/analysis/h1/set 23 200  -1.   14. GeV	  # Input electron energy histogram
+/analysis/h1/set 23 100  -1.   14. GeV	  # Input electron energy histogram
 /analysis/h1/setXaxis 23 "Energy [GeV]"
 /analysis/h1/setYaxis 23 "Number of Electrons"
 

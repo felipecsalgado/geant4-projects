@@ -1,0 +1,87 @@
++ echo SLURM: Is running on 24 threads
+SLURM: Is running on 24 threads
++ echo SLURM: sbatch is running on storageserver
+SLURM: sbatch is running on storageserver
++ echo SLURM: executing queue is long
+SLURM: executing queue is long
++ echo SLURM: working directory is /raid/home/fsalgado/GEANT4/GEANT4-projects/geant4-projects/GeneralPurpose/build-server
+SLURM: working directory is /raid/home/fsalgado/GEANT4/GEANT4-projects/geant4-projects/GeneralPurpose/build-server
++ echo SLURM: job identifier is 5613
+SLURM: job identifier is 5613
++ echo SLURM: job name is geant4
+SLURM: job name is geant4
+++ date
++ echo Start time: Tue Apr 7 15:29:33 CEST 2020
+Start time: Tue Apr 7 15:29:33 CEST 2020
++ echo ------------------------------------------------------
+------------------------------------------------------
++ cd /raid/home/fsalgado/GEANT4/GEANT4-projects/geant4-projects/GeneralPurpose/build-server
++ source /opt/geant4/bin/geant4.sh
+++ '[' -z '4.3.48(1)-release' ']'
++++ dirname /opt/geant4/bin/geant4.sh
+++ g4sls_sourced_dir=/opt/geant4/bin
++++ cd /opt/geant4/bin
++++ pwd
+++ geant4_envbindir=/opt/geant4/bin
+++ test x/raid/home/fsalgado/GEANT4/root/bin:/opt/geant4/bin:/raid/home/fsalgado/bin:/raid/home/fsalgado/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/dell/srvadmin/bin = x
+++ export PATH=/opt/geant4/bin:/raid/home/fsalgado/GEANT4/root/bin:/opt/geant4/bin:/raid/home/fsalgado/bin:/raid/home/fsalgado/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/dell/srvadmin/bin
+++ PATH=/opt/geant4/bin:/raid/home/fsalgado/GEANT4/root/bin:/opt/geant4/bin:/raid/home/fsalgado/bin:/raid/home/fsalgado/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/dell/srvadmin/bin
+++ test x/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/ = x
++++ cd /opt/geant4/bin/../lib
++++ pwd
+++ export LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/
+++ LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4NDL4.5
++++ pwd
+++ export G4NEUTRONHPDATA=/opt/geant4/share/Geant4-10.5.1/data/G4NDL4.5
+++ G4NEUTRONHPDATA=/opt/geant4/share/Geant4-10.5.1/data/G4NDL4.5
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4EMLOW7.7
++++ pwd
+++ export G4LEDATA=/opt/geant4/share/Geant4-10.5.1/data/G4EMLOW7.7
+++ G4LEDATA=/opt/geant4/share/Geant4-10.5.1/data/G4EMLOW7.7
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/PhotonEvaporation5.3
++++ pwd
+++ export G4LEVELGAMMADATA=/opt/geant4/share/Geant4-10.5.1/data/PhotonEvaporation5.3
+++ G4LEVELGAMMADATA=/opt/geant4/share/Geant4-10.5.1/data/PhotonEvaporation5.3
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/RadioactiveDecay5.3
++++ pwd
+++ export G4RADIOACTIVEDATA=/opt/geant4/share/Geant4-10.5.1/data/RadioactiveDecay5.3
+++ G4RADIOACTIVEDATA=/opt/geant4/share/Geant4-10.5.1/data/RadioactiveDecay5.3
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4PARTICLEXS1.1
++++ pwd
+++ export G4PARTICLEXSDATA=/opt/geant4/share/Geant4-10.5.1/data/G4PARTICLEXS1.1
+++ G4PARTICLEXSDATA=/opt/geant4/share/Geant4-10.5.1/data/G4PARTICLEXS1.1
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4PII1.3
++++ pwd
+++ export G4PIIDATA=/opt/geant4/share/Geant4-10.5.1/data/G4PII1.3
+++ G4PIIDATA=/opt/geant4/share/Geant4-10.5.1/data/G4PII1.3
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/RealSurface2.1.1
++++ pwd
+++ export G4REALSURFACEDATA=/opt/geant4/share/Geant4-10.5.1/data/RealSurface2.1.1
+++ G4REALSURFACEDATA=/opt/geant4/share/Geant4-10.5.1/data/RealSurface2.1.1
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4SAIDDATA2.0
++++ pwd
+++ export G4SAIDXSDATA=/opt/geant4/share/Geant4-10.5.1/data/G4SAIDDATA2.0
+++ G4SAIDXSDATA=/opt/geant4/share/Geant4-10.5.1/data/G4SAIDDATA2.0
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4ABLA3.1
++++ pwd
+++ export G4ABLADATA=/opt/geant4/share/Geant4-10.5.1/data/G4ABLA3.1
+++ G4ABLADATA=/opt/geant4/share/Geant4-10.5.1/data/G4ABLA3.1
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4INCL1.0
++++ pwd
+++ export G4INCLDATA=/opt/geant4/share/Geant4-10.5.1/data/G4INCL1.0
+++ G4INCLDATA=/opt/geant4/share/Geant4-10.5.1/data/G4INCL1.0
++++ cd /opt/geant4/bin/../share/Geant4-10.5.1/data/G4ENSDFSTATE2.2
++++ pwd
+++ export G4ENSDFSTATEDATA=/opt/geant4/share/Geant4-10.5.1/data/G4ENSDFSTATE2.2
+++ G4ENSDFSTATEDATA=/opt/geant4/share/Geant4-10.5.1/data/G4ENSDFSTATE2.2
++ export LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/:/raid/home/fsalgado/GEANT4/CADMesh-install/
++ LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/:/raid/home/fsalgado/GEANT4/CADMesh-install/
++ export LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib
++ LD_LIBRARY_PATH=/opt/geant4/lib:/raid/home/fsalgado/GEANT4/root/lib:/opt/geant4/lib:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib/:/raid/home/fsalgado/GEANT4/CADMesh-install/:/raid/home/fsalgado/GEANT4/CADMesh-install/lib
++ ./TestEm3 target.mac
++ echo ------------------------------------------------------
+------------------------------------------------------
+++ date
++ echo job completed successfully: Tue Apr 7 15:42:14 CEST 2020
+job completed successfully: Tue Apr 7 15:42:14 CEST 2020

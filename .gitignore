@@ -1,4 +1,5 @@
 *.o
-*.root
-GeneralPurpose/build/CMakeFiles/*.*
-GeneralPurpose/build/*.root
+#*.root
+GeneralPurpose/build/CMakeFiles/
+#GeneralPurpose/build/*.root
+GeneralPurpose/build-server/CMakeFiles/

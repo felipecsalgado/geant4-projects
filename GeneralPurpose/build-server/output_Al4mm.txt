@@ -1,0 +1,1456 @@
+
+**************************************************************
+ Geant4 version Name: geant4-10-05-patch-01 [MT]   (17-April-2019)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+===== TestEm3 is started with 4 threads =====
+Histogram Electron Input id = 23
+Histogram Gamma Energy Profile id = 24
+Histogram Positron Energy Profile id = 25
+Histogram Electron Energy Profile id = 26
+Histogram H2 Gamma Profile at Plane0 id = 0
+#/control/cout/ignoreThreadsExcept 0
+/run/verbose 2
+/run/numberOfThreads 5
+#
+/testem/det/setNbOfLayers 1
+/testem/det/setNbOfAbsor 1
+/testem/det/setAbsor 1 G4_Al 4 mm
+/testem/det/setSizeYZ 4 cm
+#
+#
+/testem/phys/addPhysics emstandard_opt4
+PhysicsList::AddPhysicsList: <emstandard_opt4>
+#
+/run/setCut 10 um
+#
+/run/initialize
+userDetector->Construct() start.
+
+-------------------------------------------------------------
+ ---> The calorimeter is 1 layers of:
+ 	       G4_Al:      4 mm 
+-------------------------------------------------------------
+
+ Material: Galactic    density:  0.000 kg/m3   RadL: 204322111.300 pc   Nucl.Int.Length: 113427275.267 pc 
+                       Imean:  19.200 eV   temperature:   2.73 K  pressure:   0.00 atm
+
+   --->  Element: H (H)   Z =  1.0   N =     1   A =  1.008 g/mole
+         --->  Isotope:    H1   Z =  1   N =   1   A =   1.01 g/mole   abundance: 99.989 %
+         --->  Isotope:    H2   Z =  1   N =   2   A =   2.01 g/mole   abundance:  0.011 %
+          ElmMassFraction: 100.00 %  ElmAbundance 100.00 % 
+
+
+ Material:    G4_Al    density:  2.699 g/cm3   RadL:   8.896 cm   Nucl.Int.Length:  38.894 cm 
+                       Imean: 166.000 eV   temperature: 293.15 K  pressure:   1.00 atm
+
+   --->  Element: Al (Al)   Z = 13.0   N =    27   A = 26.982 g/mole
+         --->  Isotope:  Al27   Z = 13   N =  27   A =  26.98 g/mole   abundance: 100.000 %
+          ElmMassFraction: 100.00 %  ElmAbundance 100.00 % 
+
+
+-------------------------------------------------------------
+World is registered to the default region.
+physicsList->Construct() start.
+physicsList->CheckParticleList() start.
+physicsList->setCut() start.
+/run/physicsModified
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  0  0
+### ===  Ignore cuts flag:   0
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 174 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 20 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 160 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LowEPComptonModel : Emin=    0 eV  Emax=   20 MeV Fluo
+        KleinNishina : Emin=   20 MeV Emax=  100 TeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PenConversion : Emin=    0 eV  Emax=   20 MeV
+        BetheHeitler : Emin=   20 MeV Emax=   80 GeV  ModifiedTsai
+     BetheHeitlerLPM : Emin=   80 GeV Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 20 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 180 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      RangeFactor= 0.08, stepLimType: 2, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  GoudsmitSaunderson : Emin=    0 eV  Emax=  100 MeV Nbins=120 100 eV  - 100 MeV
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=120 100 MeV - 100 TeV
+
+eIoni:  for e-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.01 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       LowEnergyIoni : Emin=    0 eV  Emax=  100 keV  deltaVI
+        MollerBhabha : Emin=  100 keV Emax=  100 TeV  deltaVI
+
+eBrem:  for e-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e-, integral:1  SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for e+  SubType= 10
+      RangeFactor= 0.08, stepLimType: 2, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  GoudsmitSaunderson : Emin=    0 eV  Emax=  100 MeV Nbins=120 100 eV  - 100 MeV
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=120 100 MeV - 100 TeV
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.01 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             PenIoni : Emin=    0 eV  Emax=  100 keV
+        MollerBhabha : Emin=  100 keV Emax=  100 TeV  deltaVI
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e+, integral:1  SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for proton  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for proton  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for proton, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+
+ionIoni:  for GenericIon  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.001 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+         ParamICRU73 : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for GenericIon SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for alpha  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+ionIoni:  for alpha  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV  deltaVI
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for alpha SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for anti_proton  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for anti_proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for anti_proton  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for anti_proton  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for anti_proton, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for kaon+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for kaon+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for kaon+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for kaon-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for kaon-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for kaon-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of kaon+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1, polarAngLim(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+muIoni:  for mu+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV
+
+muPairProd:  for mu+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for mu+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1, polarAngLim(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+muIoni:  for mu-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV
+
+muPairProd:  for mu-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for mu-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of mu+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for pi+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for pi+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for pi+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for pi-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for pi-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for pi-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of pi+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+Start closing geometry.
+G4GeometryManager::ReportVoxelStats -- Voxel Statistics
+
+    Total memory consumed for geometry optimisation:   0 kByte
+    Total CPU time elapsed for geometry optimisation: 0 seconds
+
+    Voxelisation: top CPU users:
+    Percent   Total CPU    System CPU       Memory  Volume
+    -------   ----------   ----------     --------  ----------
+       0.00         0.00         0.00            0k World
+
+    Voxelisation: top memory users:
+    Percent     Memory      Heads    Nodes   Pointers    Total CPU    Volume
+    -------   --------     ------   ------   --------   ----------    ----------
+     100.00          0k         1        3          4         0.00    World
+G4WT0 > Histogram Electron Input id = 23
+G4WT0 > Histogram Gamma Energy Profile id = 24
+G4WT0 > Histogram Positron Energy Profile id = 25
+G4WT0 > Histogram Electron Energy Profile id = 26
+G4WT0 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT1 > Histogram Electron Input id = 23
+G4WT1 > Histogram Gamma Energy Profile id = 24
+G4WT1 > Histogram Positron Energy Profile id = 25
+G4WT1 > Histogram Electron Energy Profile id = 26
+G4WT1 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT2 > Histogram Electron Input id = 23
+G4WT2 > Histogram Gamma Energy Profile id = 24
+G4WT2 > Histogram Positron Energy Profile id = 25
+G4WT2 > Histogram Electron Energy Profile id = 26
+G4WT2 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT3 > Histogram Electron Input id = 23
+G4WT3 > Histogram Gamma Energy Profile id = 24
+G4WT3 > Histogram Positron Energy Profile id = 25
+G4WT3 > Histogram Electron Energy Profile id = 26
+G4WT3 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT4 > Histogram Electron Input id = 23
+G4WT4 > Histogram Gamma Energy Profile id = 24
+G4WT4 > Histogram Positron Energy Profile id = 25
+G4WT4 > Histogram Electron Energy Profile id = 26
+G4WT4 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT0 > /run/verbose 2
+G4WT4 > /run/verbose 2
+G4WT2 > /run/verbose 2
+G4WT4 > /run/setCut 10 um
+G4WT3 > /run/verbose 2
+G4WT1 > /run/verbose 2
+G4WT0 > /run/setCut 10 um
+G4WT2 > /run/setCut 10 um
+G4WT3 > /run/setCut 10 um
+G4WT4 > /run/initialize 
+G4WT1 > /run/setCut 10 um
+G4WT4 > /run/physicsModified 
+G4WT0 > /run/initialize 
+G4WT2 > /run/initialize 
+G4WT3 > /run/initialize 
+G4WT1 > /run/initialize 
+G4WT3 > /run/physicsModified 
+G4WT2 > /run/physicsModified 
+G4WT0 > /run/physicsModified 
+G4WT1 > /run/physicsModified 
+#
+/gun/particle e-
+/gun/energy 13 GeV
+/testem/gun/rndm 0.4
+#
+/analysis/setFileName Target_Al4mm
+Set file name: Target_Al4mm
+/analysis/h1/set 1 100 0. 300. MeV
+/analysis/h1/set 11 202 0. 5. none
+/analysis/h1/set 21 202 0. 202. none
+/analysis/h1/set 22 202 0. 202. none
+## Custom energy profile of the inut electron particles
+/analysis/h1/set 23 200 -1. 14. GeV
+/analysis/h1/setXaxis 23 "Energy [GeV]"
+/analysis/h1/setYaxis 23 "Nuber of Electrons"
+## Custom energy profile histograms for the particles going out of the absorber
+/analysis/h1/set 24 200 -1. 13. GeV
+#
+/analysis/h1/set 25 200 -1. 13. GeV
+/analysis/h1/setXaxis 25 "Energy [GeV]"
+/analysis/h1/setYaxis 25 "Nuber of Positrons"
+#
+/analysis/h1/set 26 200 -1. 13. GeV
+/analysis/h1/setXaxis 26 "Energy [GeV]"
+/analysis/h1/setYaxis 26 "Nuber of Electrons"
+/analysis/h2/setX 0 50 -0.1 0.1 rad
+/analysis/h2/setY 0 50 -0.1 0.1 rad
+/analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+/analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+/analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+#
+#
+/run/printProgress 5000000
+#
+/run/beamOn 125000000
+
+Region <DefaultRegionForTheWorld> --  -- appears in <World> world volume
+ This region is in the mass world.
+ Root logical volume(s) : World 
+ Pointers : G4VUserRegionInformation[0], G4UserLimits[0], G4FastSimulationManager[0], G4UserSteppingAction[0]
+ Materials : Galactic G4_Al 
+ Production cuts :   gamma 10 um      e- 10 um      e+ 10 um  proton 10 um 
+
+Region <DefaultRegionForParallelWorld> --  -- is not associated to any world.
+ Root logical volume(s) : 
+ Pointers : G4VUserRegionInformation[0], G4UserLimits[0], G4FastSimulationManager[0], G4UserSteppingAction[0]
+ Materials : 
+ Production cuts :   gamma 10 um      e- 10 um      e+ 10 um  proton 10 um 
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes
+ Material : Galactic
+ Range cuts        :  gamma  10 um     e-  10 um     e+  10 um  proton 10 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 1 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  10 um     e-  10 um     e+  10 um  proton 10 um 
+ Energy thresholds :  gamma  990 eV     e-  34.1725 keV    e+  33.9436 keV proton 1 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+====================================================================
+
+### Run 0 starts.
+... open Root analysis file : Target_Al4mm.root - done
+G4WT0 > /gun/particle e-
+G4WT2 > /gun/particle e-
+G4WT1 > /gun/particle e-
+G4WT4 > /gun/particle e-
+G4WT3 > /gun/particle e-
+G4WT4 > /gun/energy 13 GeV
+G4WT0 > /gun/energy 13 GeV
+G4WT2 > /gun/energy 13 GeV
+G4WT1 > /gun/energy 13 GeV
+G4WT4 > /testem/gun/rndm 0.4
+G4WT4 > /analysis/setFileName Target_Al4mm
+G4WT3 > /gun/energy 13 GeV
+G4WT2 > /testem/gun/rndm 0.4
+G4WT0 > /testem/gun/rndm 0.4
+G4WT4 > Set file name: Target_Al4mm
+G4WT4 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT1 > /testem/gun/rndm 0.4
+G4WT3 > /testem/gun/rndm 0.4
+G4WT0 > /analysis/setFileName Target_Al4mm
+G4WT2 > /analysis/setFileName Target_Al4mm
+G4WT0 > Set file name: Target_Al4mm
+G4WT4 > /analysis/h1/set 11 202 0. 5. none
+G4WT0 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT2 > Set file name: Target_Al4mm
+G4WT3 > /analysis/setFileName Target_Al4mm
+G4WT1 > /analysis/setFileName Target_Al4mm
+G4WT2 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT3 > Set file name: Target_Al4mm
+G4WT4 > /analysis/h1/set 21 202 0. 202. none
+G4WT1 > Set file name: Target_Al4mm
+G4WT3 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT1 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT4 > /analysis/h1/set 22 202 0. 202. none
+G4WT0 > /analysis/h1/set 11 202 0. 5. none
+G4WT2 > /analysis/h1/set 11 202 0. 5. none
+G4WT4 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT3 > /analysis/h1/set 11 202 0. 5. none
+G4WT4 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT1 > /analysis/h1/set 11 202 0. 5. none
+G4WT4 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT4 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT0 > /analysis/h1/set 21 202 0. 202. none
+G4WT2 > /analysis/h1/set 21 202 0. 202. none
+G4WT3 > /analysis/h1/set 21 202 0. 202. none
+G4WT4 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT1 > /analysis/h1/set 21 202 0. 202. none
+G4WT4 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT4 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT0 > /analysis/h1/set 22 202 0. 202. none
+G4WT4 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT3 > /analysis/h1/set 22 202 0. 202. none
+G4WT2 > /analysis/h1/set 22 202 0. 202. none
+G4WT4 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT4 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT4 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT4 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h1/set 22 202 0. 202. none
+G4WT3 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT0 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT2 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT1 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT3 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT3 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT0 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT3 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT2 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT0 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT2 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT0 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT1 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT2 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT1 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT3 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT1 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT4 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT4 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT0 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT4 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT4 > /run/printProgress 5000000
+G4WT3 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT3 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT2 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT3 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT1 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT0 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT0 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT0 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT3 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT2 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT3 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT1 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT2 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT3 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT2 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT1 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT3 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT0 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT0 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT0 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT0 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT2 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT1 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT2 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT1 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT2 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT2 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT3 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT3 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT3 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT3 > /run/printProgress 5000000
+G4WT0 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT0 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT0 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT0 > /run/printProgress 5000000
+G4WT2 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT1 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT2 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT1 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT2 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT1 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT2 > /run/printProgress 5000000
+G4WT1 > /run/printProgress 5000000
+G4WT4 > ### Run 0 starts on worker thread 4.
+G4WT3 > ### Run 0 starts on worker thread 3.
+G4WT0 > ### Run 0 starts on worker thread 0.
+G4WT2 > ### Run 0 starts on worker thread 2.
+G4WT1 > ### Run 0 starts on worker thread 1.
+G4WT4 > ... open Root analysis file : Target_Al4mm_t4.root - done
+G4WT0 > ... open Root analysis file : Target_Al4mm_t0.root - done
+G4WT3 > ... open Root analysis file : Target_Al4mm_t3.root - done
+G4WT2 > ... open Root analysis file : Target_Al4mm_t2.root - done
+G4WT1 > ... open Root analysis file : Target_Al4mm_t1.root - done
+G4WT4 > --> Event 0 starts with initial seeds (13049039,61775110).
+
+**************************************************************
+ Geant4 version Name: geant4-10-05-patch-01 [MT]   (17-April-2019)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+===== TestEm3 is started with 4 threads =====
+Histogram Electron Input id = 23
+Histogram Gamma Energy Profile id = 24
+Histogram Positron Energy Profile id = 25
+Histogram Electron Energy Profile id = 26
+Histogram H2 Gamma Profile at Plane0 id = 0
+#/control/cout/ignoreThreadsExcept 0
+/run/verbose 2
+/run/numberOfThreads 5
+#
+/testem/det/setNbOfLayers 1
+/testem/det/setNbOfAbsor 1
+/testem/det/setAbsor 1 G4_Al 4 mm
+/testem/det/setSizeYZ 4 cm
+#
+#
+/testem/phys/addPhysics emstandard_opt4
+PhysicsList::AddPhysicsList: <emstandard_opt4>
+#
+/run/setCut 10 um
+#
+/run/initialize
+userDetector->Construct() start.
+
+-------------------------------------------------------------
+ ---> The calorimeter is 1 layers of:
+ 	       G4_Al:      4 mm 
+-------------------------------------------------------------
+
+ Material: Galactic    density:  0.000 kg/m3   RadL: 204322111.300 pc   Nucl.Int.Length: 113427275.267 pc 
+                       Imean:  19.200 eV   temperature:   2.73 K  pressure:   0.00 atm
+
+   --->  Element: H (H)   Z =  1.0   N =     1   A =  1.008 g/mole
+         --->  Isotope:    H1   Z =  1   N =   1   A =   1.01 g/mole   abundance: 99.989 %
+         --->  Isotope:    H2   Z =  1   N =   2   A =   2.01 g/mole   abundance:  0.011 %
+          ElmMassFraction: 100.00 %  ElmAbundance 100.00 % 
+
+
+ Material:    G4_Al    density:  2.699 g/cm3   RadL:   8.896 cm   Nucl.Int.Length:  38.894 cm 
+                       Imean: 166.000 eV   temperature: 293.15 K  pressure:   1.00 atm
+
+   --->  Element: Al (Al)   Z = 13.0   N =    27   A = 26.982 g/mole
+         --->  Isotope:  Al27   Z = 13   N =  27   A =  26.98 g/mole   abundance: 100.000 %
+          ElmMassFraction: 100.00 %  ElmAbundance 100.00 % 
+
+
+-------------------------------------------------------------
+World is registered to the default region.
+physicsList->Construct() start.
+physicsList->CheckParticleList() start.
+physicsList->setCut() start.
+/run/physicsModified
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  0  0
+### ===  Ignore cuts flag:   0
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 174 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 20 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 160 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LowEPComptonModel : Emin=    0 eV  Emax=   20 MeV Fluo
+        KleinNishina : Emin=   20 MeV Emax=  100 TeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PenConversion : Emin=    0 eV  Emax=   20 MeV
+        BetheHeitler : Emin=   20 MeV Emax=   80 GeV  ModifiedTsai
+     BetheHeitlerLPM : Emin=   80 GeV Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 20 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 180 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      RangeFactor= 0.08, stepLimType: 2, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  GoudsmitSaunderson : Emin=    0 eV  Emax=  100 MeV Nbins=120 100 eV  - 100 MeV
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=120 100 MeV - 100 TeV
+
+eIoni:  for e-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.01 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       LowEnergyIoni : Emin=    0 eV  Emax=  100 keV  deltaVI
+        MollerBhabha : Emin=  100 keV Emax=  100 TeV  deltaVI
+
+eBrem:  for e-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e-, integral:1  SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for e+  SubType= 10
+      RangeFactor= 0.08, stepLimType: 2, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  GoudsmitSaunderson : Emin=    0 eV  Emax=  100 MeV Nbins=120 100 eV  - 100 MeV
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=120 100 MeV - 100 TeV
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.01 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             PenIoni : Emin=    0 eV  Emax=  100 keV
+        MollerBhabha : Emin=  100 keV Emax=  100 TeV  deltaVI
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e+, integral:1  SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for proton  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for proton  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for proton, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+
+ionIoni:  for GenericIon  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.001 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+         ParamICRU73 : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for GenericIon SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for alpha  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+ionIoni:  for alpha  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV  deltaVI
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for alpha SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for anti_proton  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for anti_proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for anti_proton  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for anti_proton  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for anti_proton, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for kaon+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for kaon+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for kaon+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for kaon-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for kaon-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for kaon-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of kaon+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1, polarAngLim(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+muIoni:  for mu+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV
+
+muPairProd:  for mu+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for mu+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1, polarAngLim(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+muIoni:  for mu-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV
+
+muPairProd:  for mu-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for mu-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of mu+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi+  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for pi+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for pi+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for pi+, integral:1  SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 20 bins/decade, spline: 1
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      RangeFactor= 0.2, stepLimType: 0, latDisp: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+
+hIoni:  for pi-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV
+
+hPairProd:  for pi-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 240 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for pi-, integral:1  SubType=1 BuildTable=1
+      Used Lambda table of pi+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+Start closing geometry.
+G4GeometryManager::ReportVoxelStats -- Voxel Statistics
+
+    Total memory consumed for geometry optimisation:   0 kByte
+    Total CPU time elapsed for geometry optimisation: 0 seconds
+
+    Voxelisation: top CPU users:
+    Percent   Total CPU    System CPU       Memory  Volume
+    -------   ----------   ----------     --------  ----------
+       0.00         0.00         0.00            0k World
+
+    Voxelisation: top memory users:
+    Percent     Memory      Heads    Nodes   Pointers    Total CPU    Volume
+    -------   --------     ------   ------   --------   ----------    ----------
+     100.00          0k         1        3          4         0.00    World
+G4WT0 > Histogram Electron Input id = 23
+G4WT0 > Histogram Gamma Energy Profile id = 24
+G4WT0 > Histogram Positron Energy Profile id = 25
+G4WT0 > Histogram Electron Energy Profile id = 26
+G4WT0 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT1 > Histogram Electron Input id = 23
+G4WT1 > Histogram Gamma Energy Profile id = 24
+G4WT1 > Histogram Positron Energy Profile id = 25
+G4WT1 > Histogram Electron Energy Profile id = 26
+G4WT3 > Histogram Electron Input id = 23
+G4WT3 > Histogram Gamma Energy Profile id = 24
+G4WT3 > Histogram Positron Energy Profile id = 25
+G4WT3 > Histogram Electron Energy Profile id = 26
+G4WT2 > Histogram Electron Input id = 23
+G4WT3 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT2 > Histogram Gamma Energy Profile id = 24
+G4WT2 > Histogram Positron Energy Profile id = 25
+G4WT2 > Histogram Electron Energy Profile id = 26
+G4WT1 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT2 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT4 > Histogram Electron Input id = 23
+G4WT4 > Histogram Gamma Energy Profile id = 24
+G4WT4 > Histogram Positron Energy Profile id = 25
+G4WT4 > Histogram Electron Energy Profile id = 26
+G4WT4 > Histogram H2 Gamma Profile at Plane0 id = 0
+G4WT3 > /run/verbose 2
+G4WT3 > /run/setCut 10 um
+G4WT0 > /run/verbose 2
+G4WT1 > /run/verbose 2
+G4WT4 > /run/verbose 2
+G4WT1 > /run/setCut 10 um
+G4WT3 > /run/initialize 
+G4WT2 > /run/verbose 2
+G4WT4 > /run/setCut 10 um
+G4WT0 > /run/setCut 10 um
+G4WT3 > /run/physicsModified 
+G4WT2 > /run/setCut 10 um
+G4WT1 > /run/initialize 
+G4WT1 > /run/physicsModified 
+G4WT4 > /run/initialize 
+G4WT4 > /run/physicsModified 
+G4WT2 > /run/initialize 
+G4WT0 > /run/initialize 
+G4WT2 > /run/physicsModified 
+G4WT0 > /run/physicsModified 
+#
+/gun/particle e-
+/gun/energy 13 GeV
+/testem/gun/rndm 0.4
+#
+/analysis/setFileName Target_Al4mm
+Set file name: Target_Al4mm
+/analysis/h1/set 1 100 0. 300. MeV
+/analysis/h1/set 11 202 0. 5. none
+/analysis/h1/set 21 202 0. 202. none
+/analysis/h1/set 22 202 0. 202. none
+## Custom energy profile of the inut electron particles
+/analysis/h1/set 23 200 -1. 14. GeV
+/analysis/h1/setXaxis 23 "Energy [GeV]"
+/analysis/h1/setYaxis 23 "Nuber of Electrons"
+## Custom energy profile histograms for the particles going out of the absorber
+/analysis/h1/set 24 200 -1. 13. GeV
+#
+/analysis/h1/set 25 200 -1. 13. GeV
+/analysis/h1/setXaxis 25 "Energy [GeV]"
+/analysis/h1/setYaxis 25 "Nuber of Positrons"
+#
+/analysis/h1/set 26 200 -1. 13. GeV
+/analysis/h1/setXaxis 26 "Energy [GeV]"
+/analysis/h1/setYaxis 26 "Nuber of Electrons"
+/analysis/h2/setX 0 50 -0.1 0.1 rad
+/analysis/h2/setY 0 50 -0.1 0.1 rad
+/analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+/analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+/analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+#
+#
+/run/printProgress 5000000
+#
+/run/beamOn 125000000
+
+Region <DefaultRegionForTheWorld> --  -- appears in <World> world volume
+ This region is in the mass world.
+ Root logical volume(s) : World 
+ Pointers : G4VUserRegionInformation[0], G4UserLimits[0], G4FastSimulationManager[0], G4UserSteppingAction[0]
+ Materials : Galactic G4_Al 
+ Production cuts :   gamma 10 um      e- 10 um      e+ 10 um  proton 10 um 
+
+Region <DefaultRegionForParallelWorld> --  -- is not associated to any world.
+ Root logical volume(s) : 
+ Pointers : G4VUserRegionInformation[0], G4UserLimits[0], G4FastSimulationManager[0], G4UserSteppingAction[0]
+ Materials : 
+ Production cuts :   gamma 10 um      e- 10 um      e+ 10 um  proton 10 um 
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes
+ Material : Galactic
+ Range cuts        :  gamma  10 um     e-  10 um     e+  10 um  proton 10 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 1 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  10 um     e-  10 um     e+  10 um  proton 10 um 
+ Energy thresholds :  gamma  990 eV     e-  34.1725 keV    e+  33.9436 keV proton 1 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+====================================================================
+
+### Run 0 starts.
+... open Root analysis file : Target_Al4mm.root - done
+G4WT3 > /gun/particle e-
+G4WT0 > /gun/particle e-
+G4WT2 > /gun/particle e-
+G4WT4 > /gun/particle e-
+G4WT1 > /gun/particle e-
+G4WT3 > /gun/energy 13 GeV
+G4WT0 > /gun/energy 13 GeV
+G4WT2 > /gun/energy 13 GeV
+G4WT3 > /testem/gun/rndm 0.4
+G4WT4 > /gun/energy 13 GeV
+G4WT1 > /gun/energy 13 GeV
+G4WT0 > /testem/gun/rndm 0.4
+G4WT3 > /analysis/setFileName Target_Al4mm
+G4WT2 > /testem/gun/rndm 0.4
+G4WT3 > Set file name: Target_Al4mm
+G4WT3 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT4 > /testem/gun/rndm 0.4
+G4WT0 > /analysis/setFileName Target_Al4mm
+G4WT1 > /testem/gun/rndm 0.4
+G4WT2 > /analysis/setFileName Target_Al4mm
+G4WT0 > Set file name: Target_Al4mm
+G4WT4 > /analysis/setFileName Target_Al4mm
+G4WT0 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT1 > /analysis/setFileName Target_Al4mm
+G4WT4 > Set file name: Target_Al4mm
+G4WT2 > Set file name: Target_Al4mm
+G4WT4 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT3 > /analysis/h1/set 11 202 0. 5. none
+G4WT1 > Set file name: Target_Al4mm
+G4WT2 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT1 > /analysis/h1/set 1 100 0. 300. MeV
+G4WT0 > /analysis/h1/set 11 202 0. 5. none
+G4WT4 > /analysis/h1/set 11 202 0. 5. none
+G4WT3 > /analysis/h1/set 21 202 0. 202. none
+G4WT2 > /analysis/h1/set 11 202 0. 5. none
+G4WT1 > /analysis/h1/set 11 202 0. 5. none
+G4WT0 > /analysis/h1/set 21 202 0. 202. none
+G4WT3 > /analysis/h1/set 22 202 0. 202. none
+G4WT4 > /analysis/h1/set 21 202 0. 202. none
+G4WT2 > /analysis/h1/set 21 202 0. 202. none
+G4WT1 > /analysis/h1/set 21 202 0. 202. none
+G4WT3 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT0 > /analysis/h1/set 22 202 0. 202. none
+G4WT4 > /analysis/h1/set 22 202 0. 202. none
+G4WT2 > /analysis/h1/set 22 202 0. 202. none
+G4WT3 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT1 > /analysis/h1/set 22 202 0. 202. none
+G4WT0 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT3 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT3 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT4 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT2 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT1 > /analysis/h1/set 23 200 -1. 14. GeV
+G4WT3 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT0 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT0 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT2 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT4 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT0 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT2 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT3 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT4 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT1 > /analysis/h1/setXaxis 23 "Energy [GeV]"
+G4WT2 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT3 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT4 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT1 > /analysis/h1/setYaxis 23 "Nuber of Electrons"
+G4WT3 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT1 > /analysis/h1/set 24 200 -1. 13. GeV
+G4WT0 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT2 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT3 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT4 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT3 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT3 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h1/set 25 200 -1. 13. GeV
+G4WT0 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT3 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT0 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT2 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT0 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT2 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT2 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT4 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT1 > /analysis/h1/setXaxis 25 "Energy [GeV]"
+G4WT4 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT1 > /analysis/h1/setYaxis 25 "Nuber of Positrons"
+G4WT4 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT0 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT1 > /analysis/h1/set 26 200 -1. 13. GeV
+G4WT0 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT2 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT0 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT2 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT0 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT4 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT2 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h1/setXaxis 26 "Energy [GeV]"
+G4WT4 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT2 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h1/setYaxis 26 "Nuber of Electrons"
+G4WT4 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h2/setX 0 50 -0.1 0.1 rad
+G4WT4 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT1 > /analysis/h2/setY 0 50 -0.1 0.1 rad
+G4WT3 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT3 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT3 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT3 > /run/printProgress 5000000
+G4WT0 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT0 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT0 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT2 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT0 > /run/printProgress 5000000
+G4WT2 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT2 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT2 > /run/printProgress 5000000
+G4WT4 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT1 > /analysis/h2/setYaxis 0 "Angular distribution in y-direction (rad)"
+G4WT4 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT1 > /analysis/h2/setXaxis 0 "Angular distribution in z-direction (rad)"
+G4WT4 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT1 > /analysis/h2/setTitle 0 "Gamma Photons Angular Distribution at Plane0"
+G4WT4 > /run/printProgress 5000000
+G4WT1 > /run/printProgress 5000000
+G4WT3 > ### Run 0 starts on worker thread 3.
+G4WT0 > ### Run 0 starts on worker thread 0.
+G4WT4 > ### Run 0 starts on worker thread 4.
+G4WT1 > ### Run 0 starts on worker thread 1.
+G4WT2 > ### Run 0 starts on worker thread 2.
+G4WT3 > ... open Root analysis file : Target_Al4mm_t3.root - done
+G4WT0 > ... open Root analysis file : Target_Al4mm_t0.root - done
+G4WT1 > ... open Root analysis file : Target_Al4mm_t1.root - done
+G4WT4 > ... open Root analysis file : Target_Al4mm_t4.root - done
+G4WT2 > ... open Root analysis file : Target_Al4mm_t2.root - done
+G4WT3 > --> Event 0 starts with initial seeds (13049039,61775110).
+G4WT3 > --> Event 5000000 starts with initial seeds (82358262,56290007).
+G4WT2 > --> Event 10000000 starts with initial seeds (60948905,89403914).
+G4WT2 > --> Event 15000000 starts with initial seeds (12861311,82632885).
+G4WT4 > --> Event 20000000 starts with initial seeds (53030323,79456803).
+G4WT0 > --> Event 25000000 starts with initial seeds (27932099,29080584).
+G4WT0 > --> Event 30000000 starts with initial seeds (15837449,76089759).
+G4WT1 > --> Event 35000000 starts with initial seeds (11540766,94195991).
+G4WT3 > --> Event 40000000 starts with initial seeds (89860765,87696171).
+G4WT1 > --> Event 45000000 starts with initial seeds (11719090,63105976).
+G4WT0 > --> Event 50000000 starts with initial seeds (88302712,40553825).
+G4WT3 > --> Event 55000000 starts with initial seeds (686958,7230714).
+G4WT0 > --> Event 60000000 starts with initial seeds (17215975,16530548).
